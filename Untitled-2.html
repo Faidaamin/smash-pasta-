@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smash & Pasta | Dark Kitchen</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brandRed: '#DC2626',
+                        brandDark: '#111827',
+                        brandYellow: '#FBBF24',
+                        brandGreen: '#25D366',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome pour les icones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
+        body { font-family: 'Montserrat', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-100 antialiased selection:bg-brandYellow selection:text-brandDark">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="bg-gradient-to-r from-brandRed to-brandYellow p-2.5 rounded-2xl shadow-lg shadow-brandRed/30">
+                    <i class="fa-solid fa-burger text-white text-xl"></i>
+                </div>
+                <span class="text-2xl font-black tracking-wider uppercase bg-gradient-to-r from-white via-brandYellow to-brandRed bg-clip-text text-transparent">
+                    Smash & Pasta
+                </span>
+            </div>
+            
+            <nav class="hidden md:flex items-center space-x-8 font-semibold text-sm">
+                <a href="#menu" class="hover:text-brandYellow transition">Menu</a>
+                <a href="#contact" class="hover:text-brandYellow transition">Contact & WhatsApp</a>
+            </nav>
+
+            <div class="flex items-center space-x-4">
+                <a href="https://wa.me/33759761150" target="_blank" class="hidden sm:flex items-center space-x-2 bg-brandGreen/10 border border-brandGreen/30 text-brandGreen px-4 py-2 rounded-2xl text-xs font-bold uppercase tracking-wider hover:bg-brandGreen/20 transition">
+                    <i class="fa-brands fa-whatsapp text-base"></i> WhatsApp Direct
+                </a>
+                <button onclick="toggleCart()" class="relative bg-gray-900 border border-gray-800 hover:border-brandYellow p-3 rounded-2xl flex items-center space-x-2 transition">
+                    <i class="fa-solid fa-bag-shopping text-brandYellow"></i>
+                    <span id="cart-count" class="bg-brandRed text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-32 bg-gradient-to-b from-gray-900 via-gray-950 to-gray-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6 text-center lg:text-left">
+                <span class="inline-flex items-center space-x-2 bg-brandRed/10 border border-brandRed/30 text-brandRed px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
+                    <i class="fa-solid fa-fire"></i> Dark Kitchen Officielle
+                </span>
+                <h1 class="text-4xl sm:text-6xl font-black uppercase tracking-tight leading-none">
+                    Le Smash & La Pasta <br><span class="text-brandYellow">Ultime</span> à la maison
+                </h1>
+                <p class="text-gray-400 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
+                    Des burgers smashés juteux à souhait, des tenders croustillants et des pâtes gourmandes préparées à la commande. Commandez directement sur WhatsApp !
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                    <a href="#menu" class="bg-gradient-to-r from-brandRed to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold px-8 py-4 rounded-2xl shadow-xl shadow-brandRed/20 transition text-center uppercase tracking-wider text-sm">
+                        Voir le Menu
+                    </a>
+                    <a href="https://wa.me/33759761150?text=Bonjour,%20je%20souhaite%20commander" target="_blank" class="bg-brandGreen hover:bg-emerald-600 text-white font-bold px-8 py-4 rounded-2xl transition text-center text-sm flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Commander sur WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <!-- Affichage du Flyer Officiel -->
+            <div class="relative flex justify-center">
+                <div class="absolute -inset-4 bg-gradient-to-r from-brandRed to-brandYellow rounded-3xl blur-2xl opacity-20 animate-pulse"></div>
+                <div class="relative bg-gray-900 border border-gray-800 p-3 rounded-3xl shadow-2xl max-w-md w-full">
+                    <img src="https://i.postimg.cc/85xhqkdx/Chat-GPT-Image-15-sept-2026-01-27-55.png" alt="Flyer Smash & Pasta Officiel" class="rounded-2xl w-full h-auto object-cover shadow-md">
+                    <div class="mt-3 text-center">
+                        <span class="text-xs font-bold text-brandYellow uppercase tracking-wider">Flyer Officiel Smash & Pasta</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-gray-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-3 mb-16">
+                <h2 class="text-3xl sm:text-5xl font-black uppercase tracking-tight">Notre Carte</h2>
+                <p class="text-gray-400 text-sm sm:text-base">Boisson au choix incluse sur nos formules et plats.</p>
+            </div>
+
+            <!-- SECTION : BOX & FORMULES -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-black uppercase tracking-wider mb-8 text-brandYellow flex items-center gap-3">
+                    <i class="fa-solid fa-box-open"></i> Les Box & Formules
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Le Duo Ultime -->
+                    <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-brandRed/50 transition">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="bg-brandRed text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Best-Seller</span>
+                                <span class="text-2xl font-black text-brandYellow">15,99 €</span>
+                            </div>
+                            <h4 class="text-xl font-bold uppercase mb-2">Le Duo Ultime</h4>
+                            <p class="text-gray-400 text-sm mb-2">2 Burgers (1 Viande + 1 Tender) + Tenders + Wings</p>
+                            <span class="inline-block text-xs text-brandYellow font-semibold bg-brandYellow/10 px-2.5 py-1 rounded-lg">Boisson au choix incluse</span>
+                        </div>
+                        <button onclick="addToCart('Le Duo Ultime', 15.99)" class="mt-6 w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded-xl transition text-sm uppercase tracking-wider">
+                            Ajouter au panier
+                        </button>
+                    </div>
+
+                    <!-- Box Solo Smash -->
+                    <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between hover:border-brandRed/50 transition">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="bg-gray-800 text-gray-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Solo</span>
+                                <span class="text-2xl font-black text-brandYellow">11,99 €</span>
+                            </div>
+                            <h4 class="text-xl font-bold uppercase mb-2">Box Solo Smash</h4>
+                            <p class="text-gray-400 text-sm mb-2">1 Smash Burger Simple + Tenders ou Wings + Boisson</p>
+                            <span class="inline-block text-xs text-brandYellow font-semibold bg-brandYellow/10 px-2.5 py-1 rounded-lg">Boisson au choix incluse</span>
+                        </div>
+                        <button onclick="addToCart('Box Solo Smash', 11.99)" class="mt-6 w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded-xl transition text-sm uppercase tracking-wider">
+                            Ajouter au panier
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION : SMASH BURGERS -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-black uppercase tracking-wider mb-8 text-brandYellow flex items-center gap-3">
+                    <i class="fa-solid fa-burger"></i> Nos Smash Burgers
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xl font-black text-brandYellow">6,99 €</span>
+                            </div>
+                            <h4 class="text-lg font-bold uppercase mb-2">Smash Classic</h4>
+                            <p class="text-gray-400 text-sm mb-6">Steak smashé pur bœuf, cheddar fondu, oignons caramélisés, sauce maison.</p>
+                        </div>
+                        <button onclick="addToCart('Smash Classic', 6.99)" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded-xl transition text-sm uppercase tracking-wider">
+                            Ajouter
+                        </button>
+                    </div>
+
+                    <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xl font-black text-brandYellow">7,99 €</span>
+                            </div>
+                            <h4 class="text-lg font-bold uppercase mb-2">Smash Double Bacon</h4>
+                            <p class="text-gray-400 text-sm mb-6">Double steak smashé, double cheddar, bacon croustillant, sauce secrète.</p>
+                        </div>
+                        <button onclick="addToCart('Smash Double Bacon', 7.99)" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded-xl transition text-sm uppercase tracking-wider">
+                            Ajouter
+                        </button>
+                    </div>
+
+                    <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xl font-black text-brandYellow">6,99 €</span>
+                            </div>
+                            <h4 class="text-lg font-bold uppercase mb-2">Smash Chicken Tender</h4>
+                            <p class="text-gray-400 text-sm mb-6">Tender de poulet ultra croustillant, salade fraîche, cheddar, sauce spicy.</p>
+                        </div>
+                        <button onclick="addToCart('Smash Chicken Tender', 6.99)" class="w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded-xl transition text-sm uppercase tracking-wider">
+                            Ajouter
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION : PÂTES -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-black uppercase tracking-wider mb-8 text-brandYellow flex items-center gap-3">
+                    <i class="fa-solid fa-bowl-food"></i> Nos Pâtes Gourmandes
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xl font-black text-brandYellow">9,50 €</span>
+                            </div>
+                            <h4 class="text-lg font-bold uppercase mb-2">Pasta Carbonara</h4>
+                            <p class="text-gray-400 text-sm mb-2">Pâtes fraîches, crème onctueuse, lardons fumés, parmesan râpé.</p>
+                            <span class="inline-block text-xs text-brandYellow font-semibold bg-brandYellow/10 px-2.5 py-1 rounded-lg">Boisson au choix incluse</span>
+                        </div>
+                        <button onclick="addToCart('Pasta Carbonara', 9.50)" class="mt-6 w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded-xl transition text-sm uppercase tracking-wider">
+                            Ajouter
+                        </button>
+                    </div>
+
+                    <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xl font-black text-brandYellow">10,50 €</span>
+                            </div>
+                            <h4 class="text-lg font-bold uppercase mb-2">Pasta Poulet Champignons</h4>
+                            <p class="text-gray-400 text-sm mb-2">Pâtes fraîches, émincés de poulet marinés, champignons frais sautés, crème.</p>
+                            <span class="inline-block text-xs text-brandYellow font-semibold bg-brandYellow/10 px-2.5 py-1 rounded-lg">Boisson au choix incluse</span>
+                        </div>
+                        <button onclick="addToCart('Pasta Poulet Champignons', 10.50)" class="mt-6 w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded-xl transition text-sm uppercase tracking-wider">
+                            Ajouter
+                        </button>
+                    </div>
+
+                    <div class="bg-gray-900 border border-gray-800 rounded-3xl p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <span class="text-xl font-black text-brandYellow">9,90 €</span>
+                            </div>
+                            <h4 class="text-lg font-bold uppercase mb-2">Pasta Bolognaise</h4>
+                            <p class="text-gray-400 text-sm mb-2">Pâtes fraîches, sauce tomate mijotée maison, viande hachée pur bœuf, herbes.</p>
+                            <span class="inline-block text-xs text-brandYellow font-semibold bg-brandYellow/10 px-2.5 py-1 rounded-lg">Boisson au choix incluse</span>
+                        </div>
+                        <button onclick="addToCart('Pasta Bolognaise', 9.90)" class="mt-6 w-full bg-brandRed hover:bg-red-700 text-white font-bold py-3 rounded-xl transition text-sm uppercase tracking-wider">
+                            Ajouter
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION : BOISSONS -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-black uppercase tracking-wider mb-8 text-brandYellow flex items-center gap-3">
+                    <i class="fa-solid fa-bottle-water"></i> Nos Boissons & Énergisantes (33cl)
+                </h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Coca-Cola</span>
+                        <button onclick="addToCart('Coca-Cola', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Coca-Cola Zero</span>
+                        <button onclick="addToCart('Coca-Cola Zero', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Coca-Cola Cherry</span>
+                        <button onclick="addToCart('Coca-Cola Cherry', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">7UP Mojito</span>
+                        <button onclick="addToCart('7UP Mojito', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Fanta Exotic</span>
+                        <button onclick="addToCart('Fanta Exotic', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Oasis Pomme Cassis</span>
+                        <button onclick="addToCart('Oasis Pomme Cassis', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Schweppes</span>
+                        <button onclick="addToCart('Schweppes', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Ice Tea</span>
+                        <button onclick="addToCart('Ice Tea', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Oasis Tropical</span>
+                        <button onclick="addToCart('Oasis Tropical', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Orangina</span>
+                        <button onclick="addToCart('Orangina', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Red Bull</span>
+                        <button onclick="addToCart('Red Bull', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Monster</span>
+                        <button onclick="addToCart('Monster', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                    <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex justify-between items-center">
+                        <span class="font-bold text-sm">Monster Ultra</span>
+                        <button onclick="addToCart('Monster Ultra', 2.00)" class="text-brandYellow hover:text-white"><i class="fa-solid fa-plus-circle text-lg"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact & WhatsApp Banner -->
+    <section id="contact" class="py-16 bg-gray-900 border-t border-gray-800 text-center">
+        <div class="max-w-4xl mx-auto px-4 space-y-6">
+            <h3 class="text-3xl font-black uppercase">Une question ou une commande spéciale ?</h3>
+            <p class="text-gray-400 text-sm">Contactez-nous directement sur WhatsApp pour passer commande instantanément.</p>
+            <a href="https://wa.me/33759761150?text=Bonjour,%20je%20souhaite%20commander%20chez%20Smash%20%26%20Pasta" target="_blank" class="inline-flex items-center gap-3 bg-brandGreen hover:bg-emerald-600 text-white font-bold px-8 py-4 rounded-2xl transition text-base uppercase tracking-wider shadow-lg shadow-brandGreen/20">
+                <i class="fa-brands fa-whatsapp text-2xl"></i> +33 7 59 76 11 50
+            </a>
+        </div>
+    </section>
+
+    <!-- Panier / Modal Panier -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex justify-end">
+        <div class="bg-gray-900 w-full max-w-md h-full flex flex-col justify-between p-6 border-l border-gray-800">
+            <div>
+                <div class="flex justify-between items-center mb-6 border-b border-gray-800 pb-4">
+                    <h3 class="text-xl font-black uppercase">Votre Panier</h3>
+                    <button onclick="toggleCart()" class="text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div id="cart-items" class="space-y-4 overflow-y-auto max-h-[60vh]">
+                    <p class="text-gray-500 text-center py-8">Votre panier est vide</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-4 space-y-4">
+                <div class="flex justify-between text-lg font-bold">
+                    <span>Total :</span>
+                    <span id="cart-total" class="text-brandYellow">0,00 €</span>
+                </div>
+                <button onclick="checkoutWhatsApp()" class="w-full bg-brandGreen hover:bg-emerald-600 text-white font-bold py-4 rounded-2xl uppercase tracking-wider text-sm shadow-lg shadow-brandGreen/30 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Commander sur WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Panier & WhatsApp -->
+    <script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+            showNotification(name);
+        }
+
+        function updateCartUI() {
+            const countEl = document.getElementById('cart-count');
+            const itemsEl = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+
+            countEl.textContent = cart.length;
+
+            if (cart.length === 0) {
+                itemsEl.innerHTML = '<p class="text-gray-500 text-center py-8">Votre panier est vide</p>';
+                totalEl.textContent = '0,00 €';
+                return;
+            }
+
+            let total = 0;
+            itemsEl.innerHTML = '';
+            cart.forEach((item, index) => {
+                total += item.price;
+                itemsEl.innerHTML += `
+                    <div class="flex justify-between items-center bg-gray-950 p-3 rounded-xl border border-gray-800">
+                        <div>
+                            <h5 class="font-bold text-sm">${item.name}</h5>
+                            <span class="text-xs text-brandYellow font-semibold">${item.price.toFixed(2)} €</span>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-400 text-sm"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            });
+            totalEl.textContent = total.toFixed(2) + ' €';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert("Votre panier est vide !");
+                return;
+            }
+
+            let message = "Bonjour, je souhaite passer commande chez Smash & Pasta :\n\n";
+            let total = 0;
+            cart.forEach(item => {
+                message += `- ${item.name} (${item.price.toFixed(2)} €)\n`;
+                total += item.price;
+            });
+            message += `\n*Total : ${total.toFixed(2)} €*`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/33759761150?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function showNotification(itemName) {
+            const notif = document.createElement('div');
+            notif.className = 'fixed bottom-5 right-5 z-50 bg-brandYellow text-brandDark font-bold px-4 py-3 rounded-2xl shadow-xl flex items-center gap-2 transition transform duration-300';
+            notif.innerHTML = `<i class="fa-solid fa-check-circle"></i> Ajouté : ${itemName}`;
+            document.body.appendChild(notif);
+            setTimeout(() => notif.remove(), 2500);
+        }
+    </script>
+</body>
+</html>
